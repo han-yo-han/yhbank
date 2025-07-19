@@ -1,0 +1,16 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>YH Bank 홈</h1>
+<p>도메인 별 기능</p>
+<ul>
+    <li><a th:href="@{/users/profile}">🙋‍♂️ 사용자 정보</a></li>
+    <li><a th:href="@{/accounts/form}">🏦 계좌 관리</a></li>
+    <li><a th:href="@{/transactions/form}">💸 거래 기능</a></li>
+</ul>
+</body>
+</html>

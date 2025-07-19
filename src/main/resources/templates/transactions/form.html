@@ -1,0 +1,19 @@
+<!-- templates/transactions/form.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>거래 기능 선택</title>
+</head>
+<body>
+<h2>💸 거래 기능 선택</h2>
+<ul>
+  <li><a th:href="@{/transactions/deposit-form}">📥 입금</a></li>
+  <li><a th:href="@{/transactions/withdraw-form}">📤 출금</a></li>
+  <li><a th:href="@{/transactions/transfer-form}">🔁 송금</a></li>
+  <li><a th:href="@{/transactions/history-form}">📜 거래내역 조회</a></li>
+</ul>
+
+<a th:href="@{/}">← 홈으로</a>
+</body>
+</html>

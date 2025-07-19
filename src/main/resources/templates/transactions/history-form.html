@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>거래 내역</title></head>
+<body>
+<h2>📄 거래 내역 조회</h2>
+<form id="historyForm">
+  <div><label>계좌번호:</label><input type="text" name="accountNo" /></div>
+  <div><label>시작일:</label><input type="date" name="from" /></div>
+  <div><label>종료일:</label><input type="date" name="to" /></div>
+  <button type="submit">조회</button>
+</form>
+
+<div id="result"></div>
+<script>
+document.getElementById('historyForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const accountNo = e.target.accountNo.value;
+const from = e.target.from.value;
+const to = e.target.to.value;
+const res = await fetch(`/transactions/history?accountNo=${accountNo}&from=${from}&to=${to}`);
+    const result = await res.json();
+  document.getElementById('result').innerText = JSON.stringify(result, null, 2);
+});
+</script>
+</body>
+</html>

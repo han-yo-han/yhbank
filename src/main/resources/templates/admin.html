@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>관리자 페이지</title>
+</head>
+<body>
+<h1>관리자 전용 페이지입니다</h1>
+<p>안녕하세요, <span th:text="${#authentication.name}"></span>님</p>
+<p>권한: <span th:text="${#authentication.authorities}"></span></p>
+</body>
+</html>

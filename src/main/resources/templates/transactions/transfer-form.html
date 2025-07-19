@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>송금</title></head>
+<body>
+<h2>🔁 송금</h2>
+<form id="transferForm">
+  <div><label>보내는 계좌번호:</label><input type="text" name="fromAccountNo" /></div>
+  <div><label>받는 계좌번호:</label><input type="text" name="toAccountNo" /></div>
+  <div><label>송금 금액:</label><input type="number" name="amount" /></div>
+  <div><label>메모:</label><input type="text" name="memo" /></div>
+  <div><label>같은 은행 여부:</label><input type="checkbox" name="sameBank" /></div>
+  <button type="submit">송금하기</button>
+</form>
+<script>
+document.getElementById('transferForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const res = await fetch('/transactions/transfer', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      fromAccountNo: f.fromAccountNo.value,
+      toAccountNo: f.toAccountNo.value,
+      amount: parseInt(f.amount.value),
+      memo: f.memo.value,
+      sameBank: f.sameBank.checked
+    })
+  });
+  const result = await res.json();
+  alert(result.message);
+});
+</script>
+</body>
+</html>

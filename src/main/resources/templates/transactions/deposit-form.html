@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>입금</title></head>
+<body>
+<h2>📥 입금</h2>
+<form id="depositForm">
+  <div><label>계좌번호:</label><input type="text" name="accountNo" /></div>
+  <div><label>입금 금액:</label><input type="number" name="amount" /></div>
+  <div><label>메모:</label><input type="text" name="memo" /></div>
+  <button type="submit">입금하기</button>
+</form>
+<script>
+document.getElementById('depositForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.target;
+  const res = await fetch('/transactions/deposit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      accountNo: f.accountNo.value,
+      amount: parseInt(f.amount.value),
+      memo: f.memo.value
+    })
+  });
+  const result = await res.json();
+  alert(result.message);
+});
+</script>
+</body>
+</html>

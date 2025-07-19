@@ -1,0 +1,15 @@
+<!-- src/main/resources/templates/users/profile.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>내 정보</title>
+</head>
+<body>
+<h2>🙋‍♂️ 내 정보</h2>
+<p><strong>아이디:</strong> <span th:text="${user.username}">username</span></p>
+<p><strong>이름:</strong> <span th:text="${user.fullName}">이름</span></p>
+
+<a th:href="@{/}">← 홈으로</a>
+</body>
+</html>
